@@ -12,16 +12,15 @@ const MainSwiper = () => {
     <Swiper
       className="h-60"
       spaceBetween={50}
-      slidesPerView={3}
+      slidesPerView={1}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >
       {slides.map((slide) => (
         <SwiperSlide className="h-full" key={slide.id}>
-          Slide
           <div
             key={slide.id}
-            className={`${slide.bgc} h-full w-full rounded-xl`}
+            className={`${slide.bgi} h-full w-full rounded-xl`}
           ></div>
         </SwiperSlide>
       ))}

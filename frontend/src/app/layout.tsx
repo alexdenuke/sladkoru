@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
 
-import { Merriweather } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import Footer from "@/components/layout/Footer/Footer";
 
-const merriweather = Merriweather({
+const roboto = Roboto({
   subsets: ["latin", "cyrillic"],
   weight: "400",
   style: "normal",
   display: "swap",
-  variable: "--font-merriweather",
+  variable: "--font-roboto",
 });
 
 const playfairDisplay = Playfair_Display({
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={` ${merriweather.className} ${playfairDisplay.variable} antialiased `}
+        className={` ${roboto.className} ${playfairDisplay.variable} antialiased `}
       >
         <Header />
         {children}

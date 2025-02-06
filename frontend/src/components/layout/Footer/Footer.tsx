@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
+import Link from 'next/link'
+import { Separator } from '@/components/ui/separator'
 const Footer = () => {
   return (
-    <footer className="bg-gray-400 ">
-      <div className="my-container flex flex-col items-center text-center">
-        <div className="flex flex-col py-5">
+    <footer className="bg-gray-400 pb-16 md:pb-0 text-center md:text-start">
+      <div className="my-container flex flex-col items-center md:flex-row">
+        <div className="flex flex-col py-5 basis-6/12">
           <Link className="mt-4" href="/about">
             О нас
           </Link>
@@ -27,7 +27,7 @@ const Footer = () => {
             Реквизиты
           </Link>
         </div>
-        <div className="mr-auto border-y py-5 mx-auto">
+        <div className="mr-auto max-md:border-y py-5 mx-auto basis-6/12">
           <p className="mb-4 ">
             <span className="font-bold">Телефон:</span> 8(985)878-55-55,
             8(985)887-55-55
@@ -44,19 +44,17 @@ const Footer = () => {
         </div>
       </div>
       <div className="my-container">
-        <div className="flex justify-between py-5 flex-col items-center">
+        <div className="flex justify-between py-5 flex-col items-center md:border-t">
           <div className="flex mb-4">
             <img className="w-10 ml-5" src="/youtube.svg" alt="" />
             <img className="w-10 ml-5" src="/youtube.svg" alt="" />
             <img className="w-10 ml-5" src="/youtube.svg" alt="" />
           </div>
-          <p className="text-center">
-            © 2010 - 2024 Sladkoru.ru - all rights reserved
-          </p>
+          <p className="">© 2010 - 2024 Sladkoru.ru - all rights reserved</p>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

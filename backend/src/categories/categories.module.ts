@@ -7,4 +7,4 @@ import { CategoriesController } from './categories.controller';
   controllers: [CategoriesController],
   providers: [CategoriesService, PrismaService],
 })
-export class CategoriesProductsModule {}
+export class CategoriesModule {}

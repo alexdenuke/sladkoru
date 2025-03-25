@@ -1,6 +1,15 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 const BottomHeader = () => {
   const [isSticky, setIsSticky] = useState(false)
   const [imgWidth, setImgWidth] = useState(0)
@@ -32,11 +41,10 @@ const BottomHeader = () => {
   return (
     <div
       ref={stickyRef}
-      className={`sticky top-0 z-50 bg-white ${
-        isSticky
-          ? 'bg-opacity-85 backdrop-blur-lg shadow-[0px_4px_30px_rgba(6,5,50,0.1)]'
-          : 'bg-opacity-100'
-      }`}
+      className={`sticky top-0 z-50 bg-white ${isSticky
+        ? 'bg-opacity-85 backdrop-blur-lg shadow-[0px_4px_30px_rgba(6,5,50,0.1)]'
+        : 'bg-opacity-100'
+        }`}
     >
       <div className="my-container flex overflow-x-auto relative py-4 items-center">
         <Link className="" href={'/'}>
@@ -50,15 +58,14 @@ const BottomHeader = () => {
               transition: 'left 0.3s ease',
               left: isSticky ? `${imgWidth}px` : `${-imgWidth}px`,
             }}
-            src="logo-icon.svg"
+            src="/logo-icon.svg"
             alt="Лого"
           />
         </Link>
 
         <Link
-          className={`mr-5 whitespace-nowrap transition-all duration-300 ${
-            isSticky ? 'ml-16' : 'ml-0'
-          }`}
+          className={`mr-5 whitespace-nowrap transition-all duration-300 ${isSticky ? 'ml-16' : 'ml-0'
+            }`}
           href="/"
         >
           Пахлава
@@ -79,9 +86,39 @@ const BottomHeader = () => {
           Подарочные наборы
         </Link>
         {/* <img className="ml-auto hidden md:block" src="cart.svg" alt="Cart" /> */}
-        <button className=" rounded-3xl py-2 ml-auto text-black hidden md:block ">
+        {/* <button className=" rounded-3xl py-2 ml-auto text-black hidden md:block ">
           Корзина
-        </button>
+        </button> */}
+        <Sheet>
+          <SheetTrigger className='ml-auto hidden md:block'>Корзина</SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Количество товаров и общая сумма</SheetTitle>
+              <SheetDescription>
+                Информация (до минимальной суммы доставки итд )
+              </SheetDescription>
+              <div>
+                <div className='flex'>
+                  <Image src="/75527.jpg" width={100} height={100} alt="Cart" />
+                  <div className='ml-5'>
+                    <p>Название</p>
+                    <p>Описание</p>
+                  </div>
+                </div>
+                <div className='flex'>
+                  <p className='mr-auto'>Стоимость</p>
+                  <div className='flex'>
+                    <span>-</span>
+                    <span>1</span>
+                    <span>+</span>
+                  </div>
+                </div>
+              </div>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+        {/* 
+        <Link className="ml-auto hidden md:block" href={'/cart'}>Корзина</Link> */}
       </div>
     </div>
   )

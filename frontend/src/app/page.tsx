@@ -1,7 +1,8 @@
 // import Image from "next/image";
 import MainSwiper from '../components/swiper/MainSwiper'
 import PopularProductSwiper from '@/components/swiper/PopularProductsSlider'
-import ProductCard from '@/components/custom/productCard/ProductCard'
+import ProductCard from '@/components/custom/product/Product'
+import Link from 'next/link'
 // import LeafletMap from "@/components/leaflet/Leaflet";
 
 interface Category {
@@ -13,6 +14,7 @@ interface Category {
 interface Product {
   id: number
   name: string
+  slug: string
   description: string
   price: number
   weight: number
@@ -22,15 +24,14 @@ export default async function Home() {
   const res = await fetch(
     'http://localhost:5000/api/categories/with-products',
     {
-      next: { revalidate: 60 }, // ISR: обновление данных каждые 60 секунд
+      next: { revalidate: 600 }, // ISR: обновление данных каждые 60 секунд
     }
   )
   const categories: Category[] = await res.json()
-  console.log(categories[0].products)
+  // console.log(`найти id ${categories}`)
   return (
     <div className="my-container ">
       <section className="mb-16"></section>
-
       {/* <section className="mb-16 ">
         <h2 className="text-2xl font-bold">Часто заказывают</h2>
         <PopularProductSwiper />
@@ -44,6 +45,8 @@ export default async function Home() {
               {category.products.map((product: Product) => (
                 <ProductCard
                   key={product.id}
+                  id={product.id}
+                  slug={product.slug}
                   name={product.name}
                   description={product.description}
                   price={product.price}

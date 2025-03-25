@@ -25,16 +25,16 @@ const Header = () => {
         <div className="flex py-4 my-container items-center">
           <div className="flex items-center mr-auto">
             <Link className="" href={'/'}>
-              <img className="h-5" src="logo-icon.svg" alt="Logo-icon" />
+              <img className="h-5" src="/logo-icon.svg" alt="Logo-icon" />
             </Link>
             <Link className="" href={'/'}>
-              <img className="h-5 ml-1" src="logo.svg" alt="Logo" />
+              <img className="h-5 ml-1" src="/logo.svg" alt="Logo" />
             </Link>
           </div>
 
           <Sheet>
             <SheetTrigger>
-              <img className="md:hidden" src="burger.svg" alt="Меню Бургер" />
+              <img className="md:hidden" src="/burger.svg" alt="Меню Бургер" />
             </SheetTrigger>
             <SheetContent side={'left'}>
               <SheetHeader>

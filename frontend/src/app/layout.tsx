@@ -36,13 +36,18 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={` ${roboto.className} ${playfairDisplay.variable} antialiased `}
+        className={`${roboto.className} ${playfairDisplay.variable} antialiased flex flex-col min-h-screen`}
       >
+
         <TopHeader />
         <BottomHeader />
-        {children}
-        <FooterCart />
-        <Footer />
+        <main className="flex-1">
+          {children}
+        </main>
+        <footer className="shrink-0">
+          <FooterCart />
+          <Footer />
+        </footer>
       </body>
     </html>
   )

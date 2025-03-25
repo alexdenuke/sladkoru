@@ -3,6 +3,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+  console.log('🔄 Очистка базы перед заполнением...');
+  await prisma.product.deleteMany(); // 👈 Очистка перед перезаписью данных
+  await prisma.category.deleteMany();
   // Создание категорий
   const pahlava = await prisma.category.create({
     data: {
@@ -45,6 +48,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой2',
+      slug: 'turkish-pahleva-with-pistachio2',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 1335.5,
       weight: 500,
@@ -54,6 +59,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой3',
+      slug: 'turkish-pahleva-with-pistachio3',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 15.5,
       weight: 500,
@@ -63,6 +70,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой4',
+      slug: 'turkish-pahleva-with-pistachio4',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 15.5,
       weight: 500,
@@ -72,6 +81,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой5',
+      slug: 'turkish-pahleva-with-pistachio5',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 15.5,
       weight: 500,
@@ -81,6 +92,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой6',
+      slug: 'turkish-pahleva-with-pistachio6',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 15.5,
       weight: 500,
@@ -90,6 +103,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой7',
+      slug: 'turkish-pahleva-with-pistachio7',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 15.5,
       weight: 500,
@@ -99,6 +114,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Пахлава с фисташкой8',
+      slug: 'turkish-pahleva-with-pistachio8',
+      imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
       price: 15.5,
       weight: 500,
@@ -109,6 +126,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Халва с фисташкой9',
+      slug: 'turkish-pahleva-with-pistachio9',
+      imgURL: '/75527.jpg',
       description: 'Сладкая халва с фисташкой',
       price: 5.0,
       weight: 200,
@@ -118,6 +137,8 @@ async function main() {
   await prisma.product.create({
     data: {
       name: 'Чай',
+      slug: 'tea',
+      imgURL: '/75527.jpg',
       description: 'Турецкий чёрный чай',
       price: 5.0,
       weight: 200,

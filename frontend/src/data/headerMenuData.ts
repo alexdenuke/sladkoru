@@ -58,7 +58,7 @@ const headerMenu = [
   },
   {
     id: 9,
-    name: "8 (999) 999-99-99",
+    name: "8 (9) 999-99-99",
     href: "/",
     md: true,
   },

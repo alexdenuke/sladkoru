@@ -15,13 +15,20 @@ model category {
 }
 
 model product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  slug        String?  @unique
-  imgURL      String?
-  description String
-  price       Float
-  weight      Int
-  categoryId  Int
-  category    category @relation(fields: [categoryId], references: [id])
+  id            Int            @id @default(autoincrement())
+  name          String
+  slug          String?        @unique
+  imgURL        String?
+  description   String
+  categoryId    Int
+  category      category       @relation(fields: [categoryId], references: [id])
+  weightOptions WeightOption[] // Связь: один товар — много весов
+}
+
+model WeightOption {
+  id        Int     @id @default(autoincrement()) // это weightId
+  weight    Int // в граммах
+  price     Float
+  productId Int
+  product   product @relation(fields: [productId], references: [id])
 }

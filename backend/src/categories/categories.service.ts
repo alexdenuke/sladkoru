@@ -12,6 +12,9 @@ export class CategoriesService {
           orderBy: {
             name: 'asc', // Сортировка продуктов внутри каждой категории по имени
           },
+          include: {
+            weightOptions: true, // <-- вот это добавляем!
+          },
         },
       },
       orderBy: {

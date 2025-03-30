@@ -16,8 +16,7 @@ interface Product {
   name: string
   slug: string
   description: string
-  price: number
-  weight: number
+  weightOptions: []
 }
 export default async function Home() {
   // Запрос к вашему API Nest.js
@@ -28,7 +27,7 @@ export default async function Home() {
     }
   )
   const categories: Category[] = await res.json()
-  // console.log(`найти id ${categories}`)
+  console.log('🟢 Категории с товарами:', categories);
   return (
     <div className="my-container ">
       <section className="mb-16"></section>
@@ -49,8 +48,7 @@ export default async function Home() {
                   slug={product.slug}
                   name={product.name}
                   description={product.description}
-                  price={product.price}
-                  weight={product.weight}
+                  weightOptions={product.weightOptions}
                 />
               ))}
             </div>

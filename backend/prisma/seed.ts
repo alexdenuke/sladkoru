@@ -4,7 +4,8 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log('🔄 Очистка базы перед заполнением...');
-  await prisma.product.deleteMany(); // 👈 Очистка перед перезаписью данных
+  await prisma.weightOption.deleteMany();
+  await prisma.product.deleteMany();
   await prisma.category.deleteMany();
   // Создание категорий
   const pahlava = await prisma.category.create({
@@ -47,12 +48,17 @@ async function main() {
   // Создание продуктов с использованием ID категорий
   await prisma.product.create({
     data: {
-      name: 'Пахлава с фисташкой2',
+      name: 'Пахлава с фисташкой2222',
       slug: 'turkish-pahleva-with-pistachio2',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 1335.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -62,8 +68,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio3',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 15.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -73,8 +84,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio4',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 15.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -84,8 +100,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio5',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 15.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -95,8 +116,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio6',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 15.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -106,8 +132,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio7',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 15.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -117,8 +148,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio8',
       imgURL: '/75527.jpg',
       description: 'Традиционная турецкая пахлава с фисташкой',
-      price: 15.5,
-      weight: 500,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: pahlava.id, // Используем ID категории "Сладости"
     },
   });
@@ -129,8 +165,13 @@ async function main() {
       slug: 'turkish-pahleva-with-pistachio9',
       imgURL: '/75527.jpg',
       description: 'Сладкая халва с фисташкой',
-      price: 5.0,
-      weight: 200,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: halva.id, // Используем ID категории "Напитки"
     },
   });
@@ -140,8 +181,13 @@ async function main() {
       slug: 'tea',
       imgURL: '/75527.jpg',
       description: 'Турецкий чёрный чай',
-      price: 5.0,
-      weight: 200,
+      weightOptions: {
+        create: [
+          { weight: 100, price: 250 },
+          { weight: 250, price: 450 },
+          { weight: 500, price: 800 },
+        ],
+      },
       categoryId: tea.id, // Используем ID категории "Напитки"
     },
   });

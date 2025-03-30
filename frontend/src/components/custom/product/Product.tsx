@@ -4,7 +4,7 @@ import PopUp from '../ui/Pop-up'
 import { useState } from 'react'
 import Link from 'next/link'
 import { slugify } from '../../../lib/utils'
-import { addToCart } from '@/lib/cart'
+import { useCart } from '@/app/hooks/cartContext'
 interface ProductCardProps {
   id: number
   name: string
@@ -28,9 +28,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   console.log('product!!!!', weightOptions)
   const [isPopUpOpen, setIsPopUpOpen] = useState(false)
-
   const handleOpenPopUp = () => setIsPopUpOpen(true)
   const handleClosePopUp = () => setIsPopUpOpen(false)
+  const { addToCart } = useCart()
 
   const [selectedWeightId, setSelectedWeightId] = useState<number>(weightOptions[0]?.id || 0)
 

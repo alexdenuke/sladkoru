@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { getCart } from '@/lib/cart'
-import Cart from '@/components/cart/Cart'
+import Cart from '@/components/cart/CartSheet'
 const BottomHeader = () => {
   const [isSticky, setIsSticky] = useState(false)
   const [imgWidth, setImgWidth] = useState(0)

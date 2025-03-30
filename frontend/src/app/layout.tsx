@@ -6,6 +6,7 @@ import TopHeader from '@/components/layout/Header/TopHeader'
 import BottomHeader from '@/components/layout/Header/BottomHeader'
 import Footer from '@/components/layout/Footer/Footer'
 import FooterCart from '@/components/layout/Footer-cart/FooterCart'
+import { CartProvider } from '@/app/hooks/cartContext'
 
 const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
@@ -38,16 +39,17 @@ export default function RootLayout({
       <body
         className={`${roboto.className} ${playfairDisplay.variable} antialiased flex flex-col min-h-screen`}
       >
-
-        <TopHeader />
-        <BottomHeader />
-        <main className="flex-1">
-          {children}
-        </main>
-        <footer className="shrink-0">
-          <FooterCart />
-          <Footer />
-        </footer>
+        <CartProvider>
+          <TopHeader />
+          <BottomHeader />
+          <main className="flex-1">
+            {children}
+          </main>
+          <footer className="shrink-0">
+            <FooterCart />
+            <Footer />
+          </footer>
+        </CartProvider>
       </body>
     </html>
   )

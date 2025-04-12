@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { slugify } from '../../../lib/utils'
 import { useCart } from '@/app/hooks/cartContext'
+import { Button } from '@/components/ui/button'
 interface ProductCardProps {
   id: number
   name: string
@@ -50,9 +51,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <h3 className="mt-4 font-bold">
         <Link href={`/product/${slugify(slug)}`}>{name}</Link>{' '}
       </h3>
-      <h4 className="mt-1 text-gray-800">{description}</h4>
+      <h4 className="mt-1 text-sm text-gray-800">{description}</h4>
       <p></p>
-      <div className="flex justify-between mt-4 mb-4">
+      <div className="flex justify-between mt-4 mb-4 text-sm text-gray-600 items-center">
         <p>{selectedOption ? `${selectedOption.price} ₽` : '—'}</p>
         <select
           value={selectedWeightId}
@@ -66,7 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           ))}
         </select>
       </div>
-      <button onClick={() => {
+      {/* <button onClick={() => {
         if (selectedOption) {
           addToCart({
             productId: id,
@@ -77,7 +78,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
             quantity: 1,
           })
         }
-      }} className="w-full bg-slate-300 rounded">в корзину</button>
+      }} className="w-full bg-slate-300 rounded"></button> */}
+      <Button onClick={() => {
+        if (selectedOption) {
+          addToCart({
+            productId: id,
+            name,
+            weightId: selectedOption.id,
+            weight: selectedOption.weight,
+            price: selectedOption.price,
+            quantity: 1,
+          })
+        }
+      }} className="w-full">в корзину</Button>
     </div>
   )
 }

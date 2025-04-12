@@ -18,6 +18,9 @@ export class ProductsService {
   async findBySlug(slug: string) {
     return await this.prisma.product.findUnique({
       where: { slug },
+      include: {
+        weightOptions: true, // ← вот этого тебе не хватало
+      },
     });
   }
 }

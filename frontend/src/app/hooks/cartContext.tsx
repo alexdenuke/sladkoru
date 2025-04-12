@@ -18,6 +18,7 @@ interface CartContextType {
     cart: CartItem[]
     addToCart: (item: CartItem) => void
     clearCart: () => void
+    updateQuantity: (productId: number, weightId: number, amount: number) => void
 }
 
 const CartContext = createContext<CartContextType | null>(null)
@@ -49,7 +50,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         if (index !== -1) {
             cart[index].quantity += amount
 
-            // если стало 0 или меньше — удаляем
             if (cart[index].quantity <= 0) {
                 cart.splice(index, 1)
             }

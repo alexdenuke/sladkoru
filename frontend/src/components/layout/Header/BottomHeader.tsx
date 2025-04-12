@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { getCart } from '@/lib/cart'
-import Cart from '@/components/cart/CartSheet'
+import CartSheet from '@/components/cart/CartSheet'
 const BottomHeader = () => {
   const [isSticky, setIsSticky] = useState(false)
   const [imgWidth, setImgWidth] = useState(0)
@@ -79,7 +79,7 @@ const BottomHeader = () => {
         <Link className="mr-5 whitespace-nowrap" href={'/'}>
           Подарочные наборы
         </Link>
-        <Cart />
+        <CartSheet />
         {/* <img className="ml-auto hidden md:block" src="cart.svg" alt="Cart" /> */}
         {/* <button className=" rounded-3xl py-2 ml-auto text-black hidden md:block ">
           Корзина

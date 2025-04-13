@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button"
 const CartSheet = () => {
     const { cart, clearCart, updateQuantity, cartCount } = useCart()
 
-    if (cartCount === 0) return null
+    // if (cartCount === 0) return null
 
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 

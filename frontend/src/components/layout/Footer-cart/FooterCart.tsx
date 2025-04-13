@@ -7,25 +7,28 @@ import { cn } from "@/lib/utils"
 import { useCart } from '@/context/cartContext'
 import { ShoppingCart, X, Plus, Minus } from "lucide-react"
 const FooterCart = () => {
-  const { cart, clearCart, updateQuantity } = useCart()
+  const { cart, clearCart, updateQuantity, cartCount } = useCart()
+  const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  const [isOpen, setIsOpen] = useState(false)
+
+  // useEffect(() => {
+  //   setMounted(true)
+  // }, [])
 
   useEffect(() => {
     if (isOpen) {
-      // Disable scrolling on body when drawer is open
       document.body.style.overflow = "hidden"
     } else {
-      // Re-enable scrolling when drawer is closed
       document.body.style.overflow = "auto"
     }
-
-    // Cleanup function to ensure scroll is re-enabled when component unmounts
     return () => {
       document.body.style.overflow = "auto"
     }
   }, [isOpen])
+
+  // if (!mounted || cartCount === 0) return null
   return (
     // <div>
     //   <Link className="fixed bottom-6 right-6 md:hidden block" href="#">
@@ -35,13 +38,15 @@ const FooterCart = () => {
     //   </Link>
     // </div>
     <>
-      {/* Floating Cart Button - only visible on mobile */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 md:hidden bg-white text-black h-14 w-14 rounded-full shadow-lg flex items-center justify-center z-50"
         aria-label="Open cart"
       >
         <ShoppingCart className="h-6 w-6" />
+        <span className="absolute top-1 right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+          {cartCount}
+        </span>
       </button>
 
       {/* Cart Drawer */}

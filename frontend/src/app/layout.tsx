@@ -6,7 +6,8 @@ import TopHeader from '@/components/layout/Header/TopHeader'
 import BottomHeader from '@/components/layout/Header/BottomHeader'
 import Footer from '@/components/layout/Footer/Footer'
 import FooterCart from '@/components/layout/Footer-cart/FooterCart'
-import { CartProvider } from '@/app/hooks/cartContext'
+import { CartProvider } from '@/context/cartContext'
+import { Toaster } from "@/components/ui/toaster"
 
 const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
@@ -50,6 +51,7 @@ export default function RootLayout({
             <Footer />
           </footer>
         </CartProvider>
+        <Toaster />
       </body>
     </html>
   )

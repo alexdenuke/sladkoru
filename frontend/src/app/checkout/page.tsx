@@ -17,7 +17,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useCart } from '@/app/hooks/cartContext'
+import { useCart } from '@/context/cartContext'
 
 const formSchema = z.object({
     username: z.string().min(2, {

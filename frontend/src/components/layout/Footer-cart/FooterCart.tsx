@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { useCart } from '@/app/hooks/cartContext'
+import { useCart } from '@/context/cartContext'
 import { ShoppingCart, X, Plus, Minus } from "lucide-react"
 const FooterCart = () => {
   const { cart, clearCart, updateQuantity } = useCart()

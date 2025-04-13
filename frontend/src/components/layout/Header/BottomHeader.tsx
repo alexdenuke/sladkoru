@@ -4,11 +4,13 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { getCart } from '@/lib/cart'
 import CartSheet from '@/components/cart/CartSheet'
+
 const BottomHeader = () => {
   const [isSticky, setIsSticky] = useState(false)
   const [imgWidth, setImgWidth] = useState(0)
   const stickyRef = useRef<HTMLDivElement | null>(null)
   const imgRef = useRef<HTMLImageElement | null>(null)
+
 
   useEffect(() => {
     const handleScroll = () => {

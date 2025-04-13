@@ -1,6 +1,6 @@
 'use client'
 
-import { useCart } from '@/app/hooks/cartContext'
+import { useCart } from '@/context/cartContext'
 import { useState } from 'react'
 
 interface ProductClientProps {

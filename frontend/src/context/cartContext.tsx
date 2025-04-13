@@ -16,6 +16,7 @@ import {
 
 interface CartContextType {
     cart: CartItem[]
+    cartCount: number
     addToCart: (item: CartItem) => void
     clearCart: () => void
     updateQuantity: (productId: number, weightId: number, amount: number) => void
@@ -25,42 +26,61 @@ const CartContext = createContext<CartContextType | null>(null)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
     const [cart, setCart] = useState<CartItem[]>([])
+    const [cartCount, setCartCount] = useState(0)
+
+    const countItems = (cart: CartItem[]) =>
+        cart.reduce((total, item) => total + item.quantity, 0)
+
+    // Инициализация
+    useEffect(() => {
+        const loadedCart = getCartFromStorage()
+        setCart(loadedCart)
+        setCartCount(countItems(loadedCart))
+    }, [])
+
+
 
     useEffect(() => {
         setCart(getCartFromStorage())
     }, [])
 
+    // Добавление в корзину
     const addToCart = (item: CartItem) => {
         addToStorage(item)
-        setCart(getCartFromStorage())
+        const updatedCart = getCartFromStorage()
+        setCart(updatedCart)
+        setCartCount(countItems(updatedCart))
     }
 
+    // Очистка корзины
     const clearCart = () => {
         clearFromStorage()
         setCart([])
+        setCartCount(0)
     }
 
     const updateQuantity = (productId: number, weightId: number, amount: number) => {
-        const cart = getCartFromStorage()
+        const currentCart = getCartFromStorage()
 
-        const index = cart.findIndex(
+        const index = currentCart.findIndex(
             (item) => item.productId === productId && item.weightId === weightId
         )
 
         if (index !== -1) {
-            cart[index].quantity += amount
+            currentCart[index].quantity += amount
 
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1)
+            if (currentCart[index].quantity <= 0) {
+                currentCart.splice(index, 1)
             }
 
-            localStorage.setItem('cart', JSON.stringify(cart))
-            setCart(cart)
+            localStorage.setItem('cart', JSON.stringify(currentCart))
+            setCart(currentCart)
+            setCartCount(countItems(currentCart))
         }
     }
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, clearCart, updateQuantity }}>
+        <CartContext.Provider value={{ cart, cartCount, addToCart, clearCart, updateQuantity }}>
             {children}
         </CartContext.Provider>
     )

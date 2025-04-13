@@ -11,12 +11,15 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { useEffect, useState } from 'react'
 import Image from "next/image";
-import { useCart } from '@/app/hooks/cartContext'
+import { useCart } from '@/context/cartContext'
 import Link from "next/link";
+import { Button } from "@/components/ui/button"
 
 
 const CartSheet = () => {
-    const { cart, clearCart, updateQuantity } = useCart()
+    const { cart, clearCart, updateQuantity, cartCount } = useCart()
+
+    if (cartCount === 0) return null
 
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
@@ -25,7 +28,19 @@ const CartSheet = () => {
     // }
     return (
         <Sheet >
-            <SheetTrigger className='ml-auto hidden md:block'>Корзина</SheetTrigger>
+            <SheetTrigger asChild className=''>
+                <Button
+                    className="z-50 shadow-lg flex items-center gap-2 px-4 py-6 ml-auto hidden md:flex"
+                    size="lg"
+                >
+                    <ShoppingCart className="h-5 w-5" />
+                    <span>Cart ({cartCount})</span>
+                </Button>
+
+                {/* Корзина ({cartCount}) */}
+
+
+            </SheetTrigger>
             <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                     <SheetTitle>

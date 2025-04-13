@@ -3,6 +3,7 @@ import MainSwiper from '../components/swiper/MainSwiper'
 import PopularProductSwiper from '@/components/swiper/PopularProductsSlider'
 import ProductCard from '@/components/custom/product/Product'
 import Link from 'next/link'
+import { slugify } from '@/lib/utils'
 // import LeafletMap from "@/components/leaflet/Leaflet";
 
 interface Category {
@@ -38,7 +39,7 @@ export default async function Home() {
       <section>
         {categories.map((category) => (
           <div key={category.id} className="mb-8">
-            <h3 className="text-xl font-semibold mb-4">{category.name}</h3>
+            <h3 id={slugify(category.name)} className="text-xl font-semibold mb-4">{category.name}</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {category.products.map((product: Product) => (
@@ -53,14 +54,15 @@ export default async function Home() {
               ))}
             </div>
           </div>
-        ))}
-      </section>
+        ))
+        }
+      </section >
       <section>
         <div className="flex">
           <h2 className="basis-6/12">Доставка и оплата в Москве</h2>
           <div className="basis-6/12 h-96">{/* <LeafletMap /> */}</div>
         </div>
       </section>
-    </div>
+    </div >
   )
 }

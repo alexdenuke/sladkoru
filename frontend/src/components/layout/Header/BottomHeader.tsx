@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { getCart } from '@/lib/cart'
 import CartSheet from '@/components/cart/CartSheet'
@@ -10,6 +11,9 @@ const BottomHeader = () => {
   const [imgWidth, setImgWidth] = useState(0)
   const stickyRef = useRef<HTMLDivElement | null>(null)
   const imgRef = useRef<HTMLImageElement | null>(null)
+  const pathname = usePathname()
+  const isMainPage = pathname === '/'
+
 
 
   useEffect(() => {
@@ -19,6 +23,9 @@ const BottomHeader = () => {
         setIsSticky(stickyPosition <= 0)
       }
     }
+
+    // ⬅️ вызов сразу при монтировании
+    handleScroll()
 
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -43,52 +50,84 @@ const BottomHeader = () => {
         }`}
     >
       <div className="my-container flex overflow-x-auto relative py-4 items-center">
-        <Link className="" href={'/'}>
-          <img
-            ref={imgRef}
-            className="h-6"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              transition: 'left 0.3s ease',
-              left: isSticky ? `${imgWidth}px` : `${-imgWidth}px`,
-            }}
-            src="/logo-icon.svg"
-            alt="Лого"
-          />
-        </Link>
+        {isMainPage && (
+          <Link className="" href={'/'}>
+            <img
+              ref={imgRef}
+              className="h-6"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                transition: 'left 0.3s ease',
+                left: isSticky ? `${imgWidth}px` : `${-imgWidth}px`,
+              }}
+              src="/logo-icon.svg"
+              alt="Лого"
+            />
+          </Link>
+        )
 
-        <Link
-          className={`mr-5 whitespace-nowrap transition-all duration-300 ${isSticky ? 'ml-16' : 'ml-0'
-            }`}
-          href="/"
-        >
-          Пахлава
-        </Link>
-        <Link className="mr-5 whitespace-nowrap" href={'/'}>
-          Лукум
-        </Link>
-        <Link className="mr-5 whitespace-nowrap" href={'/'}>
-          Халва
-        </Link>
-        <Link className="mr-5 whitespace-nowrap" href={'/'}>
-          Чай
-        </Link>
-        <Link className="mr-5 whitespace-nowrap" href={'/'}>
-          Кофе
-        </Link>
-        <Link className="mr-5 whitespace-nowrap" href={'/'}>
-          Подарочные наборы
-        </Link>
-        <CartSheet />
-        {/* <img className="ml-auto hidden md:block" src="cart.svg" alt="Cart" /> */}
-        {/* <button className=" rounded-3xl py-2 ml-auto text-black hidden md:block ">
-          Корзина
-        </button> */}
+        }
 
         {/* 
-        <Link className="ml-auto hidden md:block" href={'/cart'}>Корзина</Link> */}
+        {isMainPage ? (
+          <>
+            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=pahlava">Пахлава</Link>
+            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=lukum">Лукум</Link>
+            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=halva">Халва</Link>
+            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=chay">Чай</Link>
+            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=kofe">Кофе</Link>
+          </>
+        ) : (
+          <Link
+            className="ml-4 whitespace-nowrap font-medium bg-black text-white px-4 py-2 rounded transition hover:bg-gray-800"
+            href="/"
+          >
+            Перейти в каталог
+          </Link>
+        )} */}
+        {isMainPage ? (
+
+          <>
+
+            <Link
+              className={`mr-5 whitespace-nowrap transition-all duration-300 ${isSticky ? 'ml-16' : 'ml-0'
+                }`}
+              href="#pahlava"
+            >
+              Пахлава
+            </Link>
+            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=lukum'}>
+              Лукум
+            </Link>
+            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=halva'}>
+              Халва
+            </Link>
+            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=chay'}>
+              Чай
+            </Link>
+            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=kofe'}>
+              Кофе
+            </Link>
+          </>
+        )
+          : (
+            <Link
+              className="ml-4 whitespace-nowrap font-medium bg-black text-white px-4 py-2 rounded transition hover:bg-gray-800"
+              href="/"
+            >
+              Перейти в каталог
+            </Link>
+          )
+
+
+        }
+
+        {/* <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo='}>
+          Подарочные наборы
+        </Link> */}
+        <CartSheet />
       </div>
     </div>
   )

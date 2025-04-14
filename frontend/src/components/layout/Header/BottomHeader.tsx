@@ -14,6 +14,12 @@ const BottomHeader = () => {
   const pathname = usePathname()
   const isMainPage = pathname === '/'
 
+  const [hasMounted, setHasMounted] = useState(false)
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
 
 
   useEffect(() => {
@@ -42,6 +48,7 @@ const BottomHeader = () => {
   }, [imgRef.current]) // Следим за изменением imgRef
 
   return (
+
     <div
       ref={stickyRef}
       className={`sticky top-0 z-50 bg-white ${isSticky
@@ -54,39 +61,23 @@ const BottomHeader = () => {
           <Link className="" href={'/'}>
             <img
               ref={imgRef}
-              className="h-6"
+              className={`
+                h-6 absolute top-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out
+                ${isSticky ? 'opacity-100 left-0' : 'opacity-0 pointer-events-none'}
+              `}
               style={{
-                position: 'absolute',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                transition: 'left 0.3s ease',
-                left: isSticky ? `${imgWidth}px` : `${-imgWidth}px`,
+                // position: 'absolute',
+                // top: '50%',
+                // transform: 'translateY(-50%)',
+                // transition: 'left 0.3s ease',
+                left: isSticky ? `42px` : `-42px`,
               }}
               src="/logo-icon.svg"
               alt="Лого"
             />
           </Link>
         )
-
         }
-
-        {/* 
-        {isMainPage ? (
-          <>
-            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=pahlava">Пахлава</Link>
-            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=lukum">Лукум</Link>
-            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=halva">Халва</Link>
-            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=chay">Чай</Link>
-            <Link className="mr-5 whitespace-nowrap" href="/?scrollTo=kofe">Кофе</Link>
-          </>
-        ) : (
-          <Link
-            className="ml-4 whitespace-nowrap font-medium bg-black text-white px-4 py-2 rounded transition hover:bg-gray-800"
-            href="/"
-          >
-            Перейти в каталог
-          </Link>
-        )} */}
         {isMainPage ? (
 
           <>
@@ -98,16 +89,16 @@ const BottomHeader = () => {
             >
               Пахлава
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=lukum'}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Лукум
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=halva'}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Халва
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=chay'}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Чай
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo=kofe'}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Кофе
             </Link>
           </>
@@ -123,10 +114,6 @@ const BottomHeader = () => {
 
 
         }
-
-        {/* <Link className="mr-5 whitespace-nowrap" href={'/?scrollTo='}>
-          Подарочные наборы
-        </Link> */}
         <CartSheet />
       </div>
     </div>

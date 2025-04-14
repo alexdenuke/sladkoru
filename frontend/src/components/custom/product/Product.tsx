@@ -60,7 +60,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className="p-4 flex flex-col flex-grow">
         {/* Title */}
-        <h3 className="font-bold text-lg line-clamp-2 mb-1">{name}</h3>
+        <h3 className="font-bold text-lg line-clamp-2 mb-1">
+          <Link href={`/product/${slugify(slug)}`}>{name}</Link>
+
+        </h3>
 
         {/* Description */}
         <p className="text-gray-500 text-sm line-clamp-2 mb-4">{description}</p>

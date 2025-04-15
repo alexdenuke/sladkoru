@@ -5,6 +5,7 @@ export async function generateStaticParams() {
   return [];
 }
 export default async function ProductPage({ params }: { params: { slug: string } }): Promise<JSX.Element> {
+  console.log("🟢 slug:", params.slug);
   const res = await fetch(`http://localhost:5000/api/products/slug/${params.slug}`, {
     next: { revalidate: 600 },
   });

@@ -21,7 +21,7 @@ interface Product {
 }
 export default async function Home() {
   // Запрос к вашему API Nest.js
-  const res = await fetch('http://localhost:5000/api/categories/with-products', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/with-products`, {
     next: { revalidate: 600 }, // ISR: обновление данных каждые 60 секунд
   });
   const categories: Category[] = await res.json();

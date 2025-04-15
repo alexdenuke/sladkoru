@@ -1,11 +1,11 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useCart } from "@/context/cartContext";
-import { ShoppingCart, X, Plus, Minus } from "lucide-react";
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { useCart } from '@/context/cartContext';
+import { ShoppingCart, X, Plus, Minus } from 'lucide-react';
 const FooterCart = () => {
   const { cart, clearCart, updateQuantity, cartCount } = useCart();
   const [isOpen, setIsOpen] = useState(false);
@@ -19,12 +19,12 @@ const FooterCart = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
 
@@ -52,8 +52,8 @@ const FooterCart = () => {
       {/* Cart Drawer */}
       <div
         className={cn(
-          "fixed inset-x-0 bottom-0 h-3/4 bg-white z-50 shadow-lg rounded-t-3xl transform transition-transform duration-300 ease-in-out md:hidden overflow-y-scroll",
-          isOpen ? "translate-y-0" : "translate-y-full",
+          'fixed inset-x-0 bottom-0 h-3/4 bg-white z-50 shadow-lg rounded-t-3xl transform transition-transform duration-300 ease-in-out md:hidden overflow-y-scroll',
+          isOpen ? 'translate-y-0' : 'translate-y-full'
         )}
       >
         {/* Drawer Header */}
@@ -76,7 +76,7 @@ const FooterCart = () => {
           >
             <div className="h-16 w-16 bg-gray-100 rounded-md flex-shrink-0">
               <Image
-                src={"/hero.jpg"}
+                src={'/hero.jpg'}
                 alt={item.name}
                 width={100}
                 height={100}
@@ -91,21 +91,15 @@ const FooterCart = () => {
               <p className="text-sm text-gray-500">{item.weight} гр</p>
               <div className="flex items-center mt-2">
                 <button
-                  onClick={() =>
-                    updateQuantity(item.productId, item.weightId, -1)
-                  }
+                  onClick={() => updateQuantity(item.productId, item.weightId, -1)}
                   className="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
                   aria-label="Decrease quantity"
                 >
                   <Minus className="h-3 w-3" />
                 </button>
-                <span className="mx-3 min-w-[20px] text-center">
-                  {item.quantity}
-                </span>
+                <span className="mx-3 min-w-[20px] text-center">{item.quantity}</span>
                 <button
-                  onClick={() =>
-                    updateQuantity(item.productId, item.weightId, 1)
-                  }
+                  onClick={() => updateQuantity(item.productId, item.weightId, 1)}
                   className="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
                   aria-label="Increase quantity"
                 >
@@ -126,9 +120,7 @@ const FooterCart = () => {
             <span className="font-bold">{total}</span>
           </div>
           <Link href="/checkout">
-            <button className="w-full bg-black text-white py-3 rounded-md ">
-              Оформление
-            </button>
+            <button className="w-full bg-black text-white py-3 rounded-md ">Оформление</button>
           </Link>
         </div>
       </div>

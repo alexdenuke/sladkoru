@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
+import 'swiper/css';
 
 const PopularProductSwiper = () => {
   return (
@@ -23,7 +23,7 @@ const PopularProductSwiper = () => {
           slidesPerView: 3,
         },
       }}
-      onSlideChange={() => console.log("slide change")}
+      onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide className="bg-slate-500 "></SwiperSlide>

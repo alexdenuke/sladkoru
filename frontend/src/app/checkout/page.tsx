@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Textarea } from '@/components/ui/textarea';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -14,38 +14,38 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useCart } from "@/context/cartContext";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { useCart } from '@/context/cartContext';
 
 const formSchema = z.object({
   username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: 'Username must be at least 2 characters.',
   }),
   userphone: z.string().min(2, {
-    message: "Userphone must be at least 2 characters.",
+    message: 'Userphone must be at least 2 characters.',
   }),
   promocode: z.string().min(0, {
-    message: "Promocode must be at least 2 characters.",
+    message: 'Promocode must be at least 2 characters.',
   }),
   address: z.string().min(2, {
-    message: "Address must be at least 2 characters.",
+    message: 'Address must be at least 2 characters.',
   }),
 });
 
 function Checkout() {
   const { cart } = useCart();
-  console.log("Корзина", cart);
+  console.log('Корзина', cart);
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      userphone: "",
-      promocode: "",
-      address: "",
+      username: '',
+      userphone: '',
+      promocode: '',
+      address: '',
     },
   });
 
@@ -99,10 +99,7 @@ function Checkout() {
                 <FormItem className="mw-96 md:w-96">
                   <FormLabel>Адрес доставки</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="Введите ваш адрес доставки"
-                      {...field}
-                    />
+                    <Textarea placeholder="Введите ваш адрес доставки" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,9 +135,7 @@ function Checkout() {
               >
                 <div className="flex justify-between items-start">
                   <h3 className="font-medium line-clamp-2 pr-4">{item.name}</h3>
-                  <span className="whitespace-nowrap">
-                    {item.price * item.quantity} ₽
-                  </span>
+                  <span className="whitespace-nowrap">{item.price * item.quantity} ₽</span>
                 </div>
 
                 <div className="text-sm text-gray-500 mt-1">

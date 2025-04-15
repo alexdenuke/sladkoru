@@ -1,19 +1,19 @@
-"use client";
-import Image from "next/image";
-import PopUp from "../ui/Pop-up";
-import { useState } from "react";
-import Link from "next/link";
-import { slugify } from "../../../lib/utils";
-import { useCart } from "@/context/cartContext";
-import { Button } from "@/components/ui/button";
+'use client';
+import Image from 'next/image';
+import PopUp from '../ui/Pop-up';
+import { useState } from 'react';
+import Link from 'next/link';
+import { slugify } from '../../../lib/utils';
+import { useCart } from '@/context/cartContext';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
+} from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
   id: number;
@@ -39,13 +39,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const { addToCart } = useCart();
   const { toast } = useToast();
 
-  const [selectedWeightId, setSelectedWeightId] = useState<number>(
-    weightOptions[0]?.id || 0,
-  );
+  const [selectedWeightId, setSelectedWeightId] = useState<number>(weightOptions[0]?.id || 0);
 
-  const selectedOption = weightOptions.find(
-    (opt) => opt.id === selectedWeightId,
-  );
+  const selectedOption = weightOptions.find((opt) => opt.id === selectedWeightId);
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
       {/* <div className="h-[180px] w-full relative">
@@ -82,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Price */}
         <div className="font-bold text-lg mb-3">
-          {selectedOption ? `${selectedOption.price} ₽` : "—"}
+          {selectedOption ? `${selectedOption.price} ₽` : '—'}
         </div>
 
         {/* Weight Dropdown */}

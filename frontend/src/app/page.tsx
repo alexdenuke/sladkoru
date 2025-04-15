@@ -1,9 +1,9 @@
 // import Image from "next/image";
-import MainSwiper from "../components/swiper/MainSwiper";
-import PopularProductSwiper from "@/components/swiper/PopularProductsSlider";
-import ProductCard from "@/components/custom/product/Product";
-import Link from "next/link";
-import { slugify } from "@/lib/utils";
+import MainSwiper from '../components/swiper/MainSwiper';
+import PopularProductSwiper from '@/components/swiper/PopularProductsSlider';
+import ProductCard from '@/components/custom/product/Product';
+import Link from 'next/link';
+import { slugify } from '@/lib/utils';
 // import LeafletMap from "@/components/leaflet/Leaflet";
 
 interface Category {
@@ -21,14 +21,11 @@ interface Product {
 }
 export default async function Home() {
   // Запрос к вашему API Nest.js
-  const res = await fetch(
-    "http://localhost:5000/api/categories/with-products",
-    {
-      next: { revalidate: 600 }, // ISR: обновление данных каждые 60 секунд
-    },
-  );
+  const res = await fetch('http://localhost:5000/api/categories/with-products', {
+    next: { revalidate: 600 }, // ISR: обновление данных каждые 60 секунд
+  });
   const categories: Category[] = await res.json();
-  console.log("🟢 Категории с товарами:", categories);
+  console.log('🟢 Категории с товарами:', categories);
   return (
     <div className="my-container ">
       <section className="mb-16"></section>
@@ -39,10 +36,7 @@ export default async function Home() {
       <section>
         {categories.map((category) => (
           <div key={category.id} className="mb-8">
-            <h3
-              id={slugify(category.name)}
-              className="text-xl font-semibold mb-4"
-            >
+            <h3 id={slugify(category.name)} className="text-xl font-semibold mb-4">
               {category.name}
             </h3>
 

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useCart } from "@/context/cartContext";
-import { useState } from "react";
+import { useCart } from '@/context/cartContext';
+import { useState } from 'react';
 
 interface ProductClientProps {
   product: {
@@ -14,15 +14,14 @@ interface ProductClientProps {
 }
 
 export default function ProductClient({ product }: ProductClientProps) {
-  console.log("💡 Product in client:", product);
+  console.log('💡 Product in client:', product);
   const { addToCart } = useCart();
 
   const [selectedWeightId, setSelectedWeightId] = useState<number | null>(
-    product.weightOptions?.[0]?.id ?? null,
+    product.weightOptions?.[0]?.id ?? null
   );
 
-  const selectedOption =
-    product.weightOptions?.find((opt) => opt.id === selectedWeightId) ?? null;
+  const selectedOption = product.weightOptions?.find((opt) => opt.id === selectedWeightId) ?? null;
 
   return (
     <div className="my-container">
@@ -33,7 +32,7 @@ export default function ProductClient({ product }: ProductClientProps) {
       {(product.weightOptions?.length ?? 0) > 0 ? (
         <>
           <select
-            value={selectedWeightId ?? ""}
+            value={selectedWeightId ?? ''}
             onChange={(e) => setSelectedWeightId(Number(e.target.value))}
           >
             {product.weightOptions.map((opt) => (
@@ -43,14 +42,10 @@ export default function ProductClient({ product }: ProductClientProps) {
             ))}
           </select>
 
-          <p className="mt-2 text-lg font-semibold">
-            {selectedOption?.price ?? "—"} ₽
-          </p>
+          <p className="mt-2 text-lg font-semibold">{selectedOption?.price ?? '—'} ₽</p>
         </>
       ) : (
-        <p className="text-sm text-gray-500 mt-2">
-          Нет доступных вариантов веса
-        </p>
+        <p className="text-sm text-gray-500 mt-2">Нет доступных вариантов веса</p>
       )}
 
       <button

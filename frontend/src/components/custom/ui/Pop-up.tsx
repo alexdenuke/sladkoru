@@ -1,6 +1,6 @@
-"use client";
-import clsx from "clsx";
-import { useState } from "react";
+'use client';
+import clsx from 'clsx';
+import { FC } from 'react';
 
 interface PopUpProps {
   isOpen: boolean;
@@ -18,10 +18,10 @@ const PopUp: FC<PopUpProps> = ({
   onClose,
   title,
   children,
-  className = "",
-  overlayClassName = "",
+  className = '',
+  overlayClassName = '',
   closeButton = true,
-  closeIcon = "×", // по умолчанию крестик
+  closeIcon = '×', // по умолчанию крестик
 }) => {
   if (!isOpen) return null;
 
@@ -34,16 +34,13 @@ const PopUp: FC<PopUpProps> = ({
   return (
     <div
       className={clsx(
-        "fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50",
-        overlayClassName,
+        'fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50',
+        overlayClassName
       )}
       onClick={handleOverlayClick}
     >
       <div
-        className={clsx(
-          "bg-white p-6 rounded-lg shadow-lg relative max-w-lg w-full",
-          className,
-        )}
+        className={clsx('bg-white p-6 rounded-lg shadow-lg relative max-w-lg w-full', className)}
       >
         {title && <h2 className="text-2xl font-semibold mb-4">{title}</h2>}
         {children}

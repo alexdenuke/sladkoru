@@ -1,10 +1,10 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { getCart } from "@/lib/cart";
-import CartSheet from "@/components/cart/CartSheet";
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { getCart } from '@/lib/cart';
+import CartSheet from '@/components/cart/CartSheet';
 
 const BottomHeader = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -12,7 +12,7 @@ const BottomHeader = () => {
   const stickyRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const pathname = usePathname();
-  const isMainPage = pathname === "/";
+  const isMainPage = pathname === '/';
 
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -31,16 +31,16 @@ const BottomHeader = () => {
     // ⬅️ вызов сразу при монтировании
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   useEffect(() => {
     if (imgRef.current) {
       const width = imgRef.current.offsetWidth;
-      console.log("Image Width: ", width);
+      console.log('Image Width: ', width);
       setImgWidth(width); // Записываем ширину в состояние
     }
   }, [imgRef.current]); // Следим за изменением imgRef
@@ -50,18 +50,18 @@ const BottomHeader = () => {
       ref={stickyRef}
       className={`sticky top-0 z-50 bg-white ${
         isSticky
-          ? "bg-opacity-85 backdrop-blur-lg shadow-[0px_4px_30px_rgba(6,5,50,0.1)]"
-          : "bg-opacity-100"
+          ? 'bg-opacity-85 backdrop-blur-lg shadow-[0px_4px_30px_rgba(6,5,50,0.1)]'
+          : 'bg-opacity-100'
       }`}
     >
       <div className="my-container flex overflow-x-auto relative py-4 items-center">
         {isMainPage && (
-          <Link className="" href={"/"}>
+          <Link className="" href={'/'}>
             <img
               ref={imgRef}
               className={`
                 h-6 absolute top-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out
-                ${isSticky ? "opacity-100 left-0" : "opacity-0 pointer-events-none"}
+                ${isSticky ? 'opacity-100 left-0' : 'opacity-0 pointer-events-none'}
               `}
               style={{
                 // position: 'absolute',
@@ -79,22 +79,22 @@ const BottomHeader = () => {
           <>
             <Link
               className={`mr-5 whitespace-nowrap transition-all duration-300 ${
-                isSticky ? "ml-16" : "ml-0"
+                isSticky ? 'ml-16' : 'ml-0'
               }`}
               href="#pahlava"
             >
               Пахлава
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={"/"}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Лукум
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={"/"}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Халва
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={"/"}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Чай
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={"/"}>
+            <Link className="mr-5 whitespace-nowrap" href={'/'}>
               Кофе
             </Link>
           </>

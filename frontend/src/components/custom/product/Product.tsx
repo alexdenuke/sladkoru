@@ -1,27 +1,33 @@
-'use client'
-import Image from 'next/image'
-import PopUp from '../ui/Pop-up'
-import { useState } from 'react'
-import Link from 'next/link'
-import { slugify } from '../../../lib/utils'
-import { useCart } from '@/context/cartContext'
-import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useToast } from "@/hooks/use-toast"
+"use client";
+import Image from "next/image";
+import PopUp from "../ui/Pop-up";
+import { useState } from "react";
+import Link from "next/link";
+import { slugify } from "../../../lib/utils";
+import { useCart } from "@/context/cartContext";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
-  id: number
-  name: string
-  slug: string
-  description: string
-  weightOptions: WeightOptions[]
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  weightOptions: WeightOptions[];
 }
 
 interface WeightOptions {
-  id: number,
-  weight: number,
-  price: number,
-  productId: number
+  id: number;
+  weight: number;
+  price: number;
+  productId: number;
 }
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
@@ -30,12 +36,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   description,
   weightOptions,
 }) => {
-  const { addToCart } = useCart()
-  const { toast } = useToast()
+  const { addToCart } = useCart();
+  const { toast } = useToast();
 
-  const [selectedWeightId, setSelectedWeightId] = useState<number>(weightOptions[0]?.id || 0)
+  const [selectedWeightId, setSelectedWeightId] = useState<number>(
+    weightOptions[0]?.id || 0,
+  );
 
-  const selectedOption = weightOptions.find((opt) => opt.id === selectedWeightId)
+  const selectedOption = weightOptions.find(
+    (opt) => opt.id === selectedWeightId,
+  );
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
       {/* <div className="h-[180px] w-full relative">
@@ -62,7 +72,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {/* Title */}
         <h3 className="font-bold text-lg line-clamp-2 mb-1">
           <Link href={`/product/${slugify(slug)}`}>{name}</Link>
-
         </h3>
 
         {/* Description */}
@@ -72,7 +81,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className="flex-grow"></div>
 
         {/* Price */}
-        <div className="font-bold text-lg mb-3">{selectedOption ? `${selectedOption.price} ₽` : '—'}</div>
+        <div className="font-bold text-lg mb-3">
+          {selectedOption ? `${selectedOption.price} ₽` : "—"}
+        </div>
 
         {/* Weight Dropdown */}
         <div className="mb-3">
@@ -94,23 +105,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Add to Cart Button */}
-        <button onClick={() => {
-          if (selectedOption) {
-            addToCart({
-              productId: id,
-              name,
-              weightId: selectedOption.id,
-              weight: selectedOption.weight,
-              price: selectedOption.price,
-              quantity: 1,
-            })
-            toast({
-              title: `добавлен в корзину`,
-              description: `${name} ${selectedOption.weight} гр - ${selectedOption.price} ₽`,
-              duration: 3000,
-            })
-          }
-        }} className="w-full bg-black hover:bg-gray-800 text-white py-2 px-4 rounded transition-colors">
+        <button
+          onClick={() => {
+            if (selectedOption) {
+              addToCart({
+                productId: id,
+                name,
+                weightId: selectedOption.id,
+                weight: selectedOption.weight,
+                price: selectedOption.price,
+                quantity: 1,
+              });
+              toast({
+                title: `добавлен в корзину`,
+                description: `${name} ${selectedOption.weight} гр - ${selectedOption.price} ₽`,
+                duration: 3000,
+              });
+            }
+          }}
+          className="w-full bg-black hover:bg-gray-800 text-white py-2 px-4 rounded transition-colors"
+        >
           Добавить в корзину
         </button>
       </div>
@@ -146,7 +160,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         }
       }} className="w-full">в корзину</Button> */}
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

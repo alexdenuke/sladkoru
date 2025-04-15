@@ -1,20 +1,19 @@
+import { Metadata } from "next";
+import ProductClient from "@/components/productClient";
 
-import ProductClient from '@/components/productClient'
-
-interface ProductProps {
-    params: { slug: string }
+export async function generateStaticParams() {
+  return [];
 }
+export default async function ProductPage({ params }: { params: { slug: string } }): Promise<JSX.Element> {
+  const res = await fetch(`http://localhost:5000/api/products/slug/${params.slug}`, {
+    next: { revalidate: 600 },
+  });
 
-export default async function ProductPage({ params }: ProductProps) {
-    const res = await fetch(`http://localhost:5000/api/products/slug/${params.slug}`, {
-        next: { revalidate: 600 },
-    })
+  if (!res.ok) {
+    throw new Error("Товар не найден");
+  }
 
-    if (!res.ok) {
-        throw new Error('Товар не найден')
-    }
+  const product = await res.json();
 
-    const product = await res.json()
-    console.log('✅ product from API:', product)
-    return <ProductClient product={product} />
+  return <ProductClient product={product} />;
 }

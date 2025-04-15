@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { Separator } from '@/components/ui/separator'
+import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 const Footer = () => {
   return (
     <footer className="bg-gray-400 pb-16 md:pb-0 text-center md:text-start">
@@ -34,8 +34,7 @@ const Footer = () => {
           </p>
           <p className="mb-4">
             <span className="font-bold">самовывоз:</span> г. Москва, м.
-            Фрунзенская, Комсомольский проспект, 24 стр. 1, Торговый центр
-            "К-24"
+            Фрунзенская, Комсомольский проспект, 24 стр. 1, Торговый центр К-24
           </p>
           <p className="mb-4">
             <span className="font-bold">Часы работы:</span> Магазин открыт: с
@@ -54,7 +53,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

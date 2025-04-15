@@ -1,3 +1,3 @@
-declare module 'transliterate' {
-    export default function transliterate(input: string): string;
-  }
+declare module "transliterate" {
+  export default function transliterate(input: string): string;
+}

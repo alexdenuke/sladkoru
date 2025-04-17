@@ -35,8 +35,8 @@ export default async function Home() {
       </section> */}
       <section>
         {categories.map((category) => (
-          <div key={category.id} className="mb-8">
-            <h3 id={slugify(category.name)} className="text-xl font-semibold mb-4">
+          <div key={category.id} className="mb-8 ">
+            <h3 id={slugify(category.name)} className="text-xl font-semibold mb-4 scroll-mt-24">
               {category.name}
             </h3>
 

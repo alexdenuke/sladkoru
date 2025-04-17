@@ -62,6 +62,12 @@ const headerMenu = [
     href: '/',
     md: true,
   },
+  {
+    id: 10,
+    name: 'О нас',
+    href: '/about',
+    md: true,
+  },
 ];
 
 export { headerCatalog, headerMenu };

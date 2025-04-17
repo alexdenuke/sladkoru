@@ -48,11 +48,10 @@ const BottomHeader = () => {
   return (
     <div
       ref={stickyRef}
-      className={`sticky top-0 z-50 bg-white ${
-        isSticky
-          ? 'bg-opacity-85 backdrop-blur-lg shadow-[0px_4px_30px_rgba(6,5,50,0.1)]'
-          : 'bg-opacity-100'
-      }`}
+      className={`sticky top-0 z-50 bg-white ${isSticky
+        ? 'bg-opacity-85 backdrop-blur-lg shadow-[0px_4px_30px_rgba(6,5,50,0.1)]'
+        : 'bg-opacity-100'
+        }`}
     >
       <div className="my-container flex overflow-x-auto relative py-4 items-center">
         {isMainPage && (
@@ -78,23 +77,22 @@ const BottomHeader = () => {
         {isMainPage ? (
           <>
             <Link
-              className={`mr-5 whitespace-nowrap transition-all duration-300 ${
-                isSticky ? 'ml-16' : 'ml-0'
-              }`}
+              className={`mr-5 whitespace-nowrap transition-all duration-300 ${isSticky ? 'ml-16' : 'ml-0'
+                }`}
               href="#pahlava"
             >
               Пахлава
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/'}>
+            <Link className="mr-5 whitespace-nowrap" href={'#lukum'}>
               Лукум
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/'}>
+            <Link className="mr-5 whitespace-nowrap" href={'#halva'}>
               Халва
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/'}>
+            <Link className="mr-5 whitespace-nowrap" href={'#chay'}>
               Чай
             </Link>
-            <Link className="mr-5 whitespace-nowrap" href={'/'}>
+            <Link className="mr-5 whitespace-nowrap" href={'#kofe'}>
               Кофе
             </Link>
           </>

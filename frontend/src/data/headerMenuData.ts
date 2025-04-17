@@ -39,33 +39,33 @@ const headerCatalog = [
 
 const headerMenu = [
   {
+    id: 5,
+    name: 'О нас',
+    href: '/about',
+    md: true,
+  },
+  {
     id: 6,
     name: 'Оплата',
-    href: '/',
+    href: '/about',
     md: true,
   },
   {
     id: 7,
     name: 'Доставка',
-    href: '/',
+    href: '/about',
     md: true,
   },
   {
     id: 8,
     name: 'Контакты',
-    href: '/',
+    href: '/about',
     md: true,
   },
   {
     id: 9,
     name: '8 (9) 999-99-99',
-    href: '/',
-    md: true,
-  },
-  {
-    id: 10,
-    name: 'О нас',
-    href: '/about',
+    href: '#',
     md: true,
   },
 ];

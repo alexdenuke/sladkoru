@@ -46,16 +46,17 @@ const headerMenu = [
   },
   {
     id: 6,
-    name: 'Оплата',
-    href: '/about',
+    name: 'Доставка',
+    href: '/delivery',
     md: true,
   },
   {
     id: 7,
-    name: 'Доставка',
+    name: 'Оплата',
     href: '/about',
     md: true,
   },
+
   {
     id: 8,
     name: 'Контакты',

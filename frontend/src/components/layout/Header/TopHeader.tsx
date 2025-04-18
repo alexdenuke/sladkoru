@@ -39,11 +39,8 @@ const Header = () => {
             <SheetContent side={'left'}>
               <SheetHeader>
                 <SheetTitle>Меню сайта</SheetTitle>
-                <SheetDescription>
-                  Приятных покупок
-
-                </SheetDescription>
-                <div className='flex flex-col gap-4'>
+                <SheetDescription>Приятных покупок</SheetDescription>
+                <div className="flex flex-col gap-4">
                   <Link href={'/about'}>О нас</Link>
                   <Link href={'/about'}>Оплата</Link>
                   <Link href={'/about'}>Доставка</Link>

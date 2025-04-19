@@ -52,17 +52,17 @@ const headerMenu = [
   },
   {
     id: 7,
+    name: 'Контакты',
+    href: '/contacts',
+    md: true,
+  },
+  {
+    id: 8,
     name: 'Оплата',
     href: '/about',
     md: true,
   },
 
-  {
-    id: 8,
-    name: 'Контакты',
-    href: '/about',
-    md: true,
-  },
   {
     id: 9,
     name: '8 (9) 999-99-99',

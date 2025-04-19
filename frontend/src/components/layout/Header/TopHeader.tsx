@@ -42,9 +42,9 @@ const Header = () => {
                 <SheetDescription>Приятных покупок</SheetDescription>
                 <div className="flex flex-col gap-4">
                   <Link href={'/about'}>О нас</Link>
+                  <Link href={'/delivery'}>Доставка</Link>
+                  <Link href={'/contacts'}>Контакты</Link>
                   <Link href={'/about'}>Оплата</Link>
-                  <Link href={'/about'}>Доставка</Link>
-                  <Link href={'/about'}>Контакты</Link>
                   <Link href={'#'}>8(999)999-99-99</Link>
                 </div>
               </SheetHeader>
